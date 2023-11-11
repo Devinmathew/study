@@ -1,0 +1,37 @@
+## method private
+class car:
+    def __init__(self):
+        self.__update()
+    
+    def _drive(self):
+        print("driving")
+    
+    def __update(self):
+        print("software updating")
+
+class c(car):
+    def __init__(self):
+        super()._drive()
+
+audi = car()
+a =c()
+
+
+## converting class into private
+class car:
+    __maxspeed = 0
+    __name = ""
+    def __init__(self):
+        print(car.__maxspeed)
+    
+    def drive(self):
+        print("driving")
+        print("the max speed is:-",self.__maxspeed)
+    
+    def setspeed(self,speed):
+        self.__maxspeed = speed
+
+bmw = car()
+bmw.drive()
+bmw.setspeed(300)
+bmw.drive()
