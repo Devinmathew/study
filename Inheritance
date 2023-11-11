@@ -1,0 +1,107 @@
+##single inheritance
+class employee:
+    raise_amt = 1.04
+    def __init__(self,first,last,pay):
+        self.first = first
+        self.last = last
+        self.mail = first+'.'+last+"@gmail.com"
+        self.pay = pay
+
+    def fullname(self):
+        return f"{self.first} {self.last}"
+        
+    def raiseamt(self):
+        return f"{self.pay*self.raise_amt}"
+
+class developer(employee):
+    raise_amt = 1.08
+
+emp = employee("amrutha","kp",10000)
+dev = developer("aparna","kp",10000)
+print(dev.fullname())
+print(emp.raiseamt())
+print(dev.raiseamt())
+
+##multiple inheritance
+class employee:
+    raise_amt = 1.04
+    def __init__(self,first,last,pay):
+        self.first = first
+        self.last = last
+        self.mail = first+'.'+last+"@gmail.com"
+        self.pay = pay
+
+    def fullname(self):
+        return f"{self.first} {self.last}"
+        
+    def raiseamt(self):
+        return f"{self.pay*self.raise_amt}"
+
+class developer(employee):
+    raise_amt = 1.08
+    def __init__(self,first,last,pay,prolang):
+        super().__init__(first,last,pay)
+        self.prolang = prolang
+
+class manager(employee):
+    def __init__(self,first,last,pay,employees=None):
+        super().__init__(first,last,pay)
+        if employees is None:
+            self.employees = []
+        else:
+            self.employees = employees
+
+    def empdisp(self):
+        if not self.employees:
+            print("manager has no developers")
+        else:
+            for emps in self.employees:
+                print("-------->",emps.fullname())
+
+    def empadd(self,emp):
+        if emp not in self.employees:
+            self.employees.append(emp)
+    
+    def emprmv(self,emp):
+        if emp in self.employees:
+            self.employees.remove(emp)
+
+dev1 = developer("amrutha","kp",10000,"sql")
+dev2 = developer("anu","priya",40000,"java")
+dev3 = developer("aparna","kp",10000,"python")
+mng = manager("sneha","p",30000,[dev1])
+
+
+print(isinstance(dev1,employee))
+print(isinstance(mng,employee))
+print(isinstance(mng,developer))
+print(isinstance(employee,developer))
+print(isinstance(developer,employee))
+print(issubclass(developer,employee))
+
+
+mng.empdisp()
+mng.empadd(dev2)
+mng.empdisp()
+mng.empadd(dev3)
+mng.empdisp()
+mng.emprmv(dev3)
+mng.empdisp()
+
+## multi level inheritance
+class person:
+    def display(self):
+        print("this is class person")
+
+class employee(person):
+    def printing(self):
+        print("hello this is derived from class person")
+
+class programmer(employee):
+    def show(self):
+        print("ṭhis class is actually derived from employee class")
+
+p1 = programmer()
+p1.display()
+p1.printing()
+p1.show()
