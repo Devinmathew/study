@@ -1,0 +1,30 @@
+@property - seters and deleters
+class employee:
+    raise_amt = 1.04
+    def __init__(self,first,last,pay):
+        self.first = first
+        self.last = last
+        self.pay = pay
+    @property
+    def fullname(self):
+        return f"{self.first} {self.last}"
+
+    @fullname.setter
+    def fullname(self,name):
+        self.first,self.last = name.split()
+
+    @property
+    def mail(self):
+        return f"{self.first}.{self.last}@gmail.com"
+
+    @fullname.deleter
+    def fullname(self):
+        self.first = None
+        self.last = None
+        print("name deleted")
+
+emp1 = employee("devin","mathew",10000)
+emp1.fullname = "david jecob"
+print(emp1.fullname)
+del emp1.fullname
+print(emp1.fullname)
