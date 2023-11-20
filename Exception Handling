@@ -1,0 +1,60 @@
+# try:
+#     code that might throw an error
+# except:
+#     code to run when an exception occurs
+# finally:
+#     code which always run
+
+
+try:
+    num1 = int(input("enter the first value:-"))
+    num2 = int(input("enter the second value:-"))
+    res = num1/num2 
+    print(res)
+except:
+    print("invalid number...please try again!!")
+finally:
+    print("done")
+print("execution completed")
+
+############################
+
+x = 5
+y = 0
+try:
+    print(m)
+    print(x/y)
+except ZeroDivisionError:
+    print("Zerodivision error, please use a valid number")
+except NameError:
+    print("Nameerror,please use a valid name")
+except:
+    print("an exception occur,please check!")
+
+print("execution completed")
+
+###################################
+
+x = int(input("Enter the value:-"))
+if x>5:
+    raise Exception
+else:
+    f= 1
+    for i in range(1,x+1):
+        f = f*i
+    print(f)
+
+###################################
+
+randomlist = ["val",2,0,5]
+for i in randomlist:
+    try:
+        print("the value is:-",i)
+        x = 1/int(i)
+        print("result is:-",x)
+        print()
+            
+    except:
+        print("Ooops! somthing went wrong!!")
+        print("try again")
+        print()        
